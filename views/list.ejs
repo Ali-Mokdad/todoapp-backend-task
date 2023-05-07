@@ -1,0 +1,32 @@
+<%- include("header") -%>
+
+<section class="vh-100 bg-dark" >
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col col-lg-8 col-xl-6">
+        <div class="card rounded-3">
+          <div class="card-body p-4">
+
+            <p class="mb-2"><span class="h2 me-2">TO DO APP</span></p>
+            <form action="/delete" method="post">
+              <%  newListItems.forEach(function(item){ %>
+            <ul class="list-group rounded-0">
+              <li class="list-group-item border-0 d-flex align-items-center ps-0">
+                <input name="checkbox" class="form-check-input me-3" type="checkbox" value="<%=item.itemId%>"  onChange="this.form.submit()" />
+                <%=item.value%>
+              </li>
+            </ul>
+            <%  }) %>
+          </form>
+            <form class="item" action="/add" method="post">
+              <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
+              <button type="submit" name="list" value="<%= listTitle %>">+</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include("footer") -%>
